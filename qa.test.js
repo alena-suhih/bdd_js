@@ -13,7 +13,6 @@ afterEach(() => {
 
 describe("Qamid tests", () => {
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("http://qamid.tmweb.ru/client/index.php");
   });
 
@@ -23,11 +22,11 @@ describe("Qamid tests", () => {
   });
 
   test("Booking ticket", async () => {
-    await clickElement(page, ".page-nav a + a + a");
-    await clickElement(page, ".movie-seances__list li + li + li a");
+    await clickElement(page, ".page-nav > a:nth-child(3)");
+    await clickElement(page, '[data-seance-id="142"]');
     await clickElement(
       page,
-      ".buying-scheme__wrapper .buying-scheme__row span + span + span + span"
+      ".buying-scheme__wrapper > .buying-scheme__row > span:nth-child(4)"
     );
     await clickElement(page, ".acceptin-button");
     const actual = await getText(page, ".acceptin-button");
@@ -35,8 +34,8 @@ describe("Qamid tests", () => {
   });
 
   test("Not booked, if the seat is not selected", async () => {
-    await clickElement(page, ".page-nav a + a + a");
-    await clickElement(page, ".movie-seances__list li + li + li a");
+    await clickElement(page, ".page-nav > a:nth-child(4)");
+    await clickElement(page, '[data-seance-id="142"]');
     await clickElement(page, ".acceptin-button");
     const actual = await getText(page, ".buying-scheme__legend div p + p");
     await expect(actual).toContain(" Свободно VIP (");
