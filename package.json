@@ -2,6 +2,7 @@
   "name": "bdd",
   "version": "1.0.0",
   "main": "jest-puppeteer.config.js",
+  "testURL": "http://qamid.tmweb.ru/client/",
   "devDependencies": {},
   "scripts": {
     "test": "jest --watchAll --detectOpenHandles",

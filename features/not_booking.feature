@@ -3,4 +3,4 @@ Feature: Not booked ticket
         Given user is on "/client/index.php" page
         When user selects the date and time
         When user clicks on Забронировать button
-        Then user didn't go to booking confirmation page, stayed on current page and sees " Свободно VIP ("
+        Then user didn't go to booking confirmation page, stayed on current page

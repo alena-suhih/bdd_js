@@ -37,7 +37,7 @@ describe("Qamid tests", () => {
     await clickElement(page, ".page-nav > a:nth-child(4)");
     await clickElement(page, '[data-seance-id="142"]');
     await clickElement(page, ".acceptin-button");
-    const actual = await getText(page, ".buying-scheme__legend div p + p");
-    await expect(actual).toContain(" Свободно VIP (");
+    const actual = page.url();
+    await expect(actual).toEqual("http://qamid.tmweb.ru/client/hall.php");
   });
 });

@@ -78,13 +78,9 @@ Then("user sees the first movie {string}", async function (string) {
 });
 
 Then(
-  "user didn't go to booking confirmation page, stayed on current page and sees {string}",
-  async function (string) {
-    const actual = await getText(
-      this.page,
-      ".buying-scheme__legend > div:nth-child(1) > p:nth-child(2)"
-    );
-    const expected = await string;
-    expect(actual).contains(expected);
+  "user didn't go to booking confirmation page, stayed on current page",
+  async function () {
+    const actual = this.page.url();
+    await expect(actual).to.equal("http://qamid.tmweb.ru/client/hall.php");
   }
 );
